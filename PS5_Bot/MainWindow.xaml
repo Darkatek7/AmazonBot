@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PS5_Bot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="210" Width="800" Background="#2e2e2e" MinWidth="400">
+        Title="MainWindow" Closed="MainWindow_OnClosed" Height="250" Width="500" Background="#2e2e2e" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="250">
     <Grid>
-        <StackPanel>
-            <Button Name="buybtn" BorderBrush="White" Click="Buybtn_OnClick" Content="Check and Buy PS5" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
-            <TextBox Name="infobox" Background="#2e2e2e" VerticalContentAlignment="Center" BorderBrush="White" Foreground="White" TextWrapping="Wrap" FontSize="35" TextAlignment="Center" IsEnabled="False" VerticalAlignment="Center" Margin="10"/>
-            <Button Name="closebtn" BorderBrush="White" Click="Closebtn_OnClick" Content="Close Browser" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Name="buybtn" Grid.Row="0" BorderBrush="White" Click="Buybtn_OnClick" Content="Check and Buy PS5" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
+        <TextBox Name="infobox" Grid.Row="1" Background="#2e2e2e" VerticalContentAlignment="Center" BorderBrush="White" Foreground="White" TextWrapping="Wrap" FontSize="35" TextAlignment="Center" IsEnabled="False" MinHeight="10" VerticalAlignment="Center" Margin="10"/>
+        <Button Name="closebtn" Grid.Row="2" BorderBrush="White" Click="Closebtn_OnClick" Content="Close Browser" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
+        
     </Grid>
 </Window>

@@ -23,6 +23,7 @@ namespace PS5_Bot
     {
         private BrowserLogic _browserLogic = new BrowserLogic();
         private Random rnd = new Random();
+        private Thread myThread;
 
         private int DelayInSec(int delay)
         {
@@ -39,26 +40,43 @@ namespace PS5_Bot
         {
             try
             {
-                    bool run = true;
-
-                    await _browserLogic.OpenPS5Screen();
-
-                    while (run.Equals(true))
-                    {
-                        await _browserLogic.ReloadTab();
-                        run = _browserLogic.CheckIfProductIsAvailable();
-                        Thread.Sleep(DelayInSec(5));
-                    }
-
-                    infobox.Text = "Check if Product was bought correctly!";
-                    await _browserLogic.CloseBrowser();
+                myThread = new Thread(Run);
+                myThread.Start();
             }
             catch { }
         }
 
         private void Closebtn_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (myThread != null)
+            {
+                _browserLogic.CloseBrowser();
+            }
+        }
+
+        public void Run()
+        {
+            bool run = true;
+
+            _browserLogic.OpenPS5Screen();
+
+            while (run.Equals(true))
+            {
+                _browserLogic.ReloadTab();
+                run = _browserLogic.CheckIfProductIsAvailable();
+                Thread.Sleep(DelayInSec(3));
+            }
+
+            infobox.Text = "Check if Product was bought correctly!";
+            _browserLogic.CloseBrowser();
+        }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            if (myThread != null)
+            {
+                _browserLogic.CloseBrowser();
+            }
         }
     }
 }

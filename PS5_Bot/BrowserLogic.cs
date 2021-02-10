@@ -71,7 +71,11 @@ namespace PS5_Bot
         public async Task CloseBrowser()
         {
             if (driver != null)
+            {
                 driver.Close();
+                driver.Quit();
+            }
+            Environment.Exit(Environment.ExitCode);
         }
 
         public async Task CloseTab()
