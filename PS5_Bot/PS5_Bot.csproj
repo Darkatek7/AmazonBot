@@ -62,7 +62,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7459E59C7A4C45FFD74D7003C95C4E883C18CDF7</ManifestCertificateThumbprint>
