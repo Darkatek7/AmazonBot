@@ -9,7 +9,9 @@ Install:
 Copy chromedriver.exe to C:/WebDriver or it won't work!
 Now Install Google Chrome.
 
-After installing both Chrome Driver and Chrome please open your Google Chrome Webbrowser and open https://www.amazon.de. 
+Now install .Net Framework 4.7.2 from: https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer
+
+After installingChrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
 Now log into the website and make sure you click the stay signed in options.
 
 Before you run the Bot, make sure you have all Chrome Drivers and Chrome Browser-Windows closed!
