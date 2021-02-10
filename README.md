@@ -3,8 +3,6 @@ This is a Bot for checking and buying a PS5 Digital Edition on Amazon.de
 
 Windows only!
 
-For the Bot to work please make sure you have Chrome Driver and Google Chrome installed!
-
 Install:
 (All Installers are in the Git Repository)
 
