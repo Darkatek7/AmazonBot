@@ -14,7 +14,7 @@ Now log into the website and make sure you click the stay signed in options.
 
 Before you run the Bot, make sure you have all Chrome Drivers and Chrome Browser-Windows closed!
 
-Now run the Program (bin\Release\PS5_Bot.exe) and click on Check and Buy PS5.
+Now run the Program (PS5_Bot.exe) and click on Check and Buy PS5.
 Make sure you only click the Button once!
 
 After Chrome was startet and Amazon loaded up, make sure it says you are logged in!
