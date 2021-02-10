@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PS5_Bot"
         mc:Ignorable="d"
-        Title="MainWindow" Closed="MainWindow_OnClosed" Height="250" Width="500" Background="#2e2e2e" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="250">
+        Title="PS5 Bot" Closed="MainWindow_OnClosed" Height="250" Width="500" Background="#2e2e2e" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
