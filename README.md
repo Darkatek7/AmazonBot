@@ -9,7 +9,7 @@ Install:
 Copy chromedriver.exe to C:/WebDriver or it won't work!
 Now Install Google Chrome.
 
-Now install .Net Framework 4.7.2 from: https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer
+Now install Cisual Studio Community 2019: https://visualstudio.microsoft.com/de/downloads/ and .Net Framework 4.7.2 from: https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer 
 
 After installingChrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
 Now log into the website and make sure you click the stay signed in options.
