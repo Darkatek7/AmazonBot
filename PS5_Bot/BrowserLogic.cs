@@ -119,7 +119,7 @@ namespace PS5_Bot
         public bool CheckIfProductIsAvailable()
         {
             IWebElement productTab = GetElementUsingXPath(
-                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]");
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[3]");
 
             if (productTab != null)
             {

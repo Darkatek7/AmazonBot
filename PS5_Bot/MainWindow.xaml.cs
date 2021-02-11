@@ -67,6 +67,8 @@ namespace PS5_Bot
             }
 
             infobox.Text = "Check if Product was bought correctly!";
+
+            Thread.Sleep(DelayInSec(10));
             _browserLogic.CloseBrowser();
         }
 
