@@ -26,7 +26,7 @@ namespace PS5_Bot
         {
             ChromeOptions options = new ChromeOptions();
             string appdataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            options.AddArguments("user-data-dir="+appdataPath+ "\\Google\\Chrome\\User Data\\Default"); // path to local Chrome Data
+            options.AddArguments("user-data-dir=" + appdataPath + "\\Google\\Chrome\\User Data\\Default"); // path to local Chrome Data
             options.AddArguments("--start-maximized");
             try
             {
@@ -117,7 +117,7 @@ namespace PS5_Bot
             // also don't forget to remove one '}' closing Bracket at the end of the function.
 
             IWebElement productTab = GetElementUsingXPath(
-                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[3]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
 
             if (productTab != null)
             {
@@ -130,27 +130,53 @@ namespace PS5_Bot
                 if (addToCart != null)
                 {
                     addToCart.Click();
-                    
+
                     Thread.Sleep(DelayInSec(3));
 
-                    IWebElement buy = GetElementUsingXPath(
-                        "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']"); // label of checkout button
+                    IWebElement noCoverage = GetElementUsingXPath( // starting point if you to check for a different product
+                        "//button[@id='siNoCoverage-announce']");
 
-                    if (buy != null)
+                    if (noCoverage != null) // this is for some products that offer coverage
                     {
-                        buy.Click();
-
-                        IWebElement confirmOrder = GetElementUsingXPath(
-                            "//input[@name='placeYourOrder1']"); // confirm order button
-
-                        Thread.Sleep(DelayInSec(3));
-
-                        if (confirmOrder != null)
+                        try
                         {
-                            confirmOrder.Click();
-                            MessageBox.Show(
-                                "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
-                            return false;
+                            noCoverage.Click();
+                            Thread.Sleep(DelayInSec(3));
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Amazon asks for Coverage");
+                        }
+                    }
+
+                    OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart");
+
+                    IWebElement proceedToCheckout = GetElementUsingXPath(
+                        "//input[@name='proceedToRetailCheckout']");
+
+                    if (proceedToCheckout != null)
+                    {
+                        proceedToCheckout.Click();
+
+                        IWebElement buy = GetElementUsingXPath(
+                            "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']"); // label of checkout button
+
+                        if (buy != null)
+                        {
+                            buy.Click();
+
+                            IWebElement confirmOrder = GetElementUsingXPath(
+                                "//input[@name='placeYourOrder1']"); // confirm order button
+
+                            Thread.Sleep(DelayInSec(3));
+
+                            if (confirmOrder != null)
+                            {
+                                confirmOrder.Click();
+                                MessageBox.Show(
+                                    "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
+                                return false;
+                            }
                         }
                     }
                 }
