@@ -117,7 +117,7 @@ namespace PS5_Bot
             // also don't forget to remove one '}' closing Bracket at the end of the function.
 
             IWebElement productTab = GetElementUsingXPath(
-                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[3]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
 
             if (productTab != null)
             {
