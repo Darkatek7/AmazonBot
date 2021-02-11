@@ -13,7 +13,7 @@ Install: (All Installers are in the Git Repository)
 * Now log into the website and make sure you click the stay signed in options.
 
 ## Before you run the Bot, make sure you have all Chrome Drivers and Chrome Browser-Windows closed!
-* Now run the Visual Studio Solution (PS5_Bot.sln)and Click on Start Button in top Center Screen.
+* Now run the Visual Studio Solution (PS5_Bot.sln) and Click on Start Button in top Center Screen.
 
 ## Now the Bot should be running! Click on Check and Buy PS5. (Make sure you only click the Button once!)
 * The bot should open your Chrome Browser. After Chrome was startet and Amazon loaded up, make sure it says you are logged in!
