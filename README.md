@@ -6,7 +6,7 @@ This is a Bot for checking and buying a PS5 Digital Edition on Amazon.de
 Windows only!
 
 Install: (All Installers are in the Git Repository)
-* Copy chromedriver.exe to C:/WebDriver or it won't work!
+* Copy chromedriver.exe to "C:/WebDriver/" or it won't work!
 * Now Install Google Chrome.
 * Now install Visual Studio Community 2019: https://visualstudio.microsoft.com/de/downloads/ and
 * .Net Framework 4.7.2 from: https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer 
