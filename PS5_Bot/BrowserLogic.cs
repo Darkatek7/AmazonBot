@@ -149,7 +149,7 @@ namespace PS5_Bot
                         }
                     }
 
-                    OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart");
+                    OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart"); // Link to your Cart
 
                     IWebElement proceedToCheckout = GetElementUsingXPath(
                         "//input[@name='proceedToRetailCheckout']");
@@ -157,9 +157,6 @@ namespace PS5_Bot
                     if (proceedToCheckout != null)
                     {
                         proceedToCheckout.Click();
-
-                        IWebElement buy = GetElementUsingXPath(
-                            "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']"); // label of checkout button
 
                         IWebElement confirmOrder = GetElementUsingXPath(
                             "//input[@name='placeYourOrder1']"); // confirm order button
