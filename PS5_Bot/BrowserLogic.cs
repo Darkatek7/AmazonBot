@@ -161,22 +161,17 @@ namespace PS5_Bot
                         IWebElement buy = GetElementUsingXPath(
                             "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']"); // label of checkout button
 
-                        if (buy != null)
+                        IWebElement confirmOrder = GetElementUsingXPath(
+                            "//input[@name='placeYourOrder1']"); // confirm order button
+
+                        Thread.Sleep(DelayInSec(3));
+
+                        if (confirmOrder != null)
                         {
-                            buy.Click();
-
-                            IWebElement confirmOrder = GetElementUsingXPath(
-                                "//input[@name='placeYourOrder1']"); // confirm order button
-
-                            Thread.Sleep(DelayInSec(3));
-
-                            if (confirmOrder != null)
-                            {
-                                confirmOrder.Click();
-                                MessageBox.Show(
-                                    "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
-                                return false;
-                            }
+                            confirmOrder.Click();
+                            MessageBox.Show(
+                                "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
+                            return false;
                         }
                     }
                 }
