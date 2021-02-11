@@ -1,7 +1,7 @@
 # PS5_Bot_AmazonDE
 This is a Bot for checking and buying a PS5 Digital Edition on Amazon.de
 
-(You can also get this to work for PS% - Disc Edition. Just follow the steps at the bottom of the page)
+(You can also get this to work for PS5 - Disc Edition. Just follow the steps at the bottom of the page)
 
 Windows only!
 
