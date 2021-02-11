@@ -62,6 +62,8 @@ namespace PS5_Bot
                     driver.FindElement(by);
                     return true;
                 }
+
+                return false;
             }
             catch (NoSuchElementException e)
             {
