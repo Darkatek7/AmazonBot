@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -131,7 +132,7 @@ namespace PS5_Bot
                 if (addToCart != null)
                 {
                     addToCart.Click();
-
+                    
                     Thread.Sleep(DelayInSec(3));
 
                     IWebElement buy = GetElementUsingXPath(
@@ -149,6 +150,8 @@ namespace PS5_Bot
                         if (confirmOrder != null)
                         {
                             confirmOrder.Click();
+                            MessageBox.Show(
+                                "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
                             return false;
                         }
                     }
