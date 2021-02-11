@@ -19,7 +19,7 @@ Install: (All Installers are in the Git Repository)
 * The bot should open your Chrome Browser. After Chrome was startet and Amazon loaded up, make sure it says you are logged in!
 * The Bot will now continuously refresh the page and check if the PS5 is Available.
 
-## When it is available, it will automaticly add it to your cart, and go to the checkout. 
+## When it is available, it will automaticly add it to your cart and go to the checkout. 
 
 If you have never bought anything using chrome:
 * All you have to do now is close the Bot enter your Amazon password on the Chrome/Amazon.de website and click and buy Product!
