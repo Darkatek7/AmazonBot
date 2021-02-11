@@ -8,7 +8,7 @@ Windows only!
 Install: (All Installers are in the Git Repository)
 * Copy **_chromedriver.exe_ to _"C:/WebDriver/"_** or it won't work!
 * Now Install **_Google Chrome_**.
-* Now install **_Visual Studio Community_** 2019: https://visualstudio.microsoft.com/de/downloads/ and
+* Now install **_Visual Studio Community 2019_**: https://visualstudio.microsoft.com/de/downloads/ and
 * install **.Net Framework 4.7.2** from: https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer 
 
 ## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
