@@ -22,7 +22,6 @@ namespace PS5_Bot
     public partial class MainWindow : Window
     {
         private BrowserLogic _browserLogic = new BrowserLogic();
-        private Random rnd = new Random();
         private Thread myThread;
 
         private int DelayInSec(int delay)

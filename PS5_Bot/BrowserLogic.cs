@@ -38,7 +38,7 @@ namespace PS5_Bot
         {
             try
             {
-                if (driver != null && site != null && site != "")
+                if (driver != null && !string.IsNullOrEmpty(site))
                     driver.Url = site;
                 else if (driver == null)
                 {
@@ -58,8 +58,10 @@ namespace PS5_Bot
             try
             {
                 if (driver != null)
+                {
                     driver.FindElement(by);
-                return true;
+                    return true;
+                }
             }
             catch (NoSuchElementException e)
             {
@@ -83,6 +85,7 @@ namespace PS5_Bot
             if (driver != null)
             {
                 var tabs = driver.WindowHandles;
+
                 if (tabs.Count > 1)
                 {
                     driver.SwitchTo().Window(tabs[0]);
