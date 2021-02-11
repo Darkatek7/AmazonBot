@@ -40,7 +40,7 @@ namespace PS5_Bot
             try
             {
                 myThread = new Thread(Run);
-                myThread.Start();
+                myThread.Start(); // creates new thread to run the checkproduct function
             }
             catch { }
         }
@@ -49,7 +49,7 @@ namespace PS5_Bot
         {
             if (myThread != null)
             {
-                _browserLogic.CloseBrowser();
+                _browserLogic.CloseBrowser(); // calls close browser function
             }
         }
 
@@ -57,26 +57,23 @@ namespace PS5_Bot
         {
             bool run = true;
 
-            _browserLogic.OpenPS5Screen();
+            _browserLogic.OpenPS5Screen(); // opens your url
 
             while (run.Equals(true))
             {
-                _browserLogic.ReloadTab();
-                run = _browserLogic.CheckIfProductIsAvailable();
-                Thread.Sleep(DelayInSec(3));
+                _browserLogic.ReloadTab(); // reload tab of chrome browser
+                run = _browserLogic.CheckIfProductIsAvailable(); // check if he product is available
+                Thread.Sleep(DelayInSec(3)); // adjust the number to get a larger or shorter delay between refreshes.
             }
 
             infobox.Text = "Check if Product was bought correctly!";
-
-            Thread.Sleep(DelayInSec(10));
-            _browserLogic.CloseBrowser();
         }
 
         private void MainWindow_OnClosed(object sender, EventArgs e)
         {
             if (myThread != null)
             {
-                _browserLogic.CloseBrowser();
+                _browserLogic.CloseBrowser(); // calls close function
             }
         }
     }

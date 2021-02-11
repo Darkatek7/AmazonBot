@@ -26,11 +26,11 @@ namespace PS5_Bot
         {
             ChromeOptions options = new ChromeOptions();
             string appdataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            options.AddArguments("user-data-dir="+appdataPath+ "\\Google\\Chrome\\User Data\\Default");
+            options.AddArguments("user-data-dir="+appdataPath+ "\\Google\\Chrome\\User Data\\Default"); // path to local Chrome Data
             options.AddArguments("--start-maximized");
             try
             {
-                driver = new ChromeDriver("C:\\WebDriver\\", options);
+                driver = new ChromeDriver("C:\\WebDriver\\", options);  // path to chromedriver
             }
             catch { }
         }
@@ -43,10 +43,10 @@ namespace PS5_Bot
                     driver.Url = site;
                 else if (driver == null)
                 {
-                    await StartBrowser();
+                    await StartBrowser(); // calls StartBrowser function
 
                     Thread.Sleep(1000);
-                    driver.Url = site;
+                    driver.Url = site; // tells the driver to go the items url
                 }
             }
             catch
@@ -60,7 +60,7 @@ namespace PS5_Bot
             {
                 if (driver != null)
                 {
-                    driver.FindElement(by);
+                    driver.FindElement(by); // checks if element is present on website
                     return true;
                 }
 
@@ -77,30 +77,17 @@ namespace PS5_Bot
         {
             if (driver != null)
             {
-                driver.Close();
-                driver.Quit();
+                driver.Close(); // closes chrome
+                driver.Quit();  // closes chromedriver
             }
-            Environment.Exit(Environment.ExitCode);
+            Environment.Exit(Environment.ExitCode); // exits program
         }
 
-        public async Task CloseTab()
-        {
-            if (driver != null)
-            {
-                var tabs = driver.WindowHandles;
-
-                if (tabs.Count > 1)
-                {
-                    driver.SwitchTo().Window(tabs[0]);
-                    driver.Close();
-                }
-            }
-        }
         public IWebElement GetElementUsingXPath(string xpath)
         {
             bool elementIsPresent = IsElementPresent(By.XPath(xpath));
 
-            if (elementIsPresent.Equals(true) && driver != null)
+            if (elementIsPresent.Equals(true) && driver != null) // checks if the element is present on the wesbite
             {
                 return driver.FindElement(By.XPath(xpath));
             }
@@ -113,20 +100,31 @@ namespace PS5_Bot
         public async Task OpenPS5Screen()
         {
             await OpenWebsite(
-                "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1");
+                "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1"); // link to the product you want to check and buy
         }
 
         public bool CheckIfProductIsAvailable()
         {
+            // Remove following if you want to check for a different Product
+            //IWebElement productTab = GetElementUsingXPath(
+            //"/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
+
+            //if (productTab != null)
+            //{
+            //    productTab.Click();
+            //    Thread.Sleep(DelayInSec(3));
+
+            // also don't forget to remove one '}' closing Bracket at the end of the function.
+
             IWebElement productTab = GetElementUsingXPath(
-                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]");
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
 
             if (productTab != null)
             {
                 productTab.Click();
                 Thread.Sleep(DelayInSec(3));
 
-                IWebElement addToCart = GetElementUsingXPath(
+                IWebElement addToCart = GetElementUsingXPath( // starting point if you to check for a different product
                     "//input[@id='add-to-cart-button']");
 
                 if (addToCart != null)
@@ -136,14 +134,14 @@ namespace PS5_Bot
                     Thread.Sleep(DelayInSec(3));
 
                     IWebElement buy = GetElementUsingXPath(
-                        "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']");
+                        "//input[@aria-labelledby='attach-sidesheet-checkout-button-announce']"); // label of checkout button
 
                     if (buy != null)
                     {
                         buy.Click();
 
                         IWebElement confirmOrder = GetElementUsingXPath(
-                            "//input[@name='placeYourOrder1']");
+                            "//input[@name='placeYourOrder1']"); // confirm order button
 
                         Thread.Sleep(DelayInSec(3));
 
