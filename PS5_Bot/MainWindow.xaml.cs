@@ -71,10 +71,10 @@ namespace PS5_Bot
 
         private void MainWindow_OnClosed(object sender, EventArgs e)
         {
-            if (myThread != null)
-            {
-                _browserLogic.CloseBrowser(); // calls close function
-            }
+            //if (myThread != null)
+            //{
+            //    _browserLogic.CloseBrowser(); // calls close function
+            //}
         }
     }
 }
