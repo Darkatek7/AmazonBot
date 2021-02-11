@@ -1,6 +1,8 @@
 # PS5_Bot_AmazonDE
 This is a Bot for checking and buying a PS5 Digital Edition on Amazon.de
 
+(You can also get this to work for PS% - Disc Edition. Just follow the steps at the bottom of the page)
+
 Windows only!
 
 Install: (All Installers are in the Git Repository)
@@ -30,3 +32,16 @@ Else:
 ### If you encounter any problem create an Issue on Github.
 
 ### I recommend not letting the bot run on standalone and keeping on eye on it.
+
+
+## PS5 - Disc Version:
+To get it to work with the Disc Version you need to change the following code in BrowserLogic/CheckIfProductIsAvailable:
+```
+IWebElement productTab = GetElementUsingXPath(
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]");
+```
+To this Code:
+```
+IWebElement productTab = GetElementUsingXPath(
+                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]");
+```
