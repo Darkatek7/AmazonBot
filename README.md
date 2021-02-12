@@ -6,7 +6,7 @@ This is a Bot for checking and buying a PS5 Digital Edition on Amazon.de
 ### Windows only! 
 ### Be careful, this buys everything in your Cart!
 
-Install: (All Installers are in the Git Repository)
+## Install: (All Installers are in the Git Repository)
 * Copy **_chromedriver.exe_ to _"C:/WebDriver/"_** or it won't work!
 * Now Install **_Google Chrome_**.
 * Now install **_Visual Studio Community 2019_**: https://visualstudio.microsoft.com/de/downloads/ and
@@ -16,7 +16,14 @@ Install: (All Installers are in the Git Repository)
 * Now **_log into the website_** and make sure you click the stay signed in options.
 
 ## Before you run the Bot, make sure you have all Chrome Drivers and Chrome Browser-Windows closed!
-* Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and Click on **Start** Button in top Center Screen.
+
+## Run Bot:
+Method 1: 
+* Run the "setup.exe" file from the installer folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
+* Then run the "" file from the path you specified.
+
+Method 2: (offers customization, Disc Version, etc) 
+* Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and click on **Start** button in top Center Screen.(Or customize if you wish to)
 
 ## Now the Bot should be running! Click on Check and Buy PS5. (Make sure you only click the Button once!)
 * The bot should open your Chrome Browser. After Chrome was startet and Amazon loaded up, make sure it says you are logged in!
