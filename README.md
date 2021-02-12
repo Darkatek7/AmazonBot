@@ -26,7 +26,7 @@ Method 2: (offers customization, Disc Version, etc)
 * Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and click on **Start** button in top Center Screen.(Or customize if you wish to)
 
 ## Now the Bot should be running! Click on Check and Buy PS5. (Make sure you only click the Button once!)
-* The bot should open your Chrome Browser. After Chrome was startet and Amazon loaded up, make sure it says you are logged in! (If not, Login)
+* The bot should open your Chrome Browser. After Chrome was started, make sure it says you are logged in on Amazon! (If not, Login)
 * The Bot will now continuously refresh the page and check if the PS5 is Available.
 
 ## When it is available, it will automaticly add it to your cart and go to the checkout. 
