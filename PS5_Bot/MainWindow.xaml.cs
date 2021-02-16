@@ -23,6 +23,7 @@ namespace PS5_Bot
     {
         private BrowserLogic _browserLogic = new BrowserLogic();
         private Thread myThread;
+        private string product;
 
         private int DelayInSec(int delay)
         {
@@ -37,6 +38,8 @@ namespace PS5_Bot
 
         private async void Buybtn_OnClick(object sender, RoutedEventArgs e)
         {
+            product = ((ComboBoxItem)versioncombobox.SelectedItem).Name.ToString();
+
             try
             {
                 myThread = new Thread(Run);
@@ -61,9 +64,11 @@ namespace PS5_Bot
 
             while (run.Equals(true))
             {
-                _browserLogic.ReloadTab(); // reload tab of chrome browser
-                run = _browserLogic.CheckIfProductIsAvailable(); // check if he product is available
-                Thread.Sleep(DelayInSec(3)); // adjust the number to get a larger or shorter delay between refreshes.
+                if (product != null)
+                {
+                    run = _browserLogic.BuyProductIfAvailable(product); // check if he product is available
+                    _browserLogic.ReloadTab(); // reload tab of chrome browser
+                }
             }
 
             infobox.Text = "Check if Product was bought correctly!";

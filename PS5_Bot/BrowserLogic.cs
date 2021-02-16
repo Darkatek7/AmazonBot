@@ -13,6 +13,7 @@ namespace PS5_Bot
 {
     public class BrowserLogic
     {
+        private int GeneralDelay = 2000;
         private int DelayInSec(int delay)
         {
             int delayInSec = delay * 1000;
@@ -80,7 +81,7 @@ namespace PS5_Bot
                 driver.Close(); // closes chrome
                 driver.Quit();  // closes chromedriver
             }
-            Environment.Exit(Environment.ExitCode); // exits program
+            //Environment.Exit(Environment.ExitCode); // exits program
         }
 
         public IWebElement GetElementUsingXPath(string xpath)
@@ -103,77 +104,110 @@ namespace PS5_Bot
                 "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1"); // link to the product you want to check and buy
         }
 
-        public bool CheckIfProductIsAvailable()
+        public bool BuyProductIfAvailable(string product)
         {
-            // Remove following if you want to check for a different Product
-            //IWebElement productTab = GetElementUsingXPath(
-            //"/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
+            GeneralDelay = 4;
+            bool run = true;
 
-            //if (productTab != null)
-            //{
-            //    productTab.Click();
-            //    Thread.Sleep(DelayInSec(3));
-
-            // also don't forget to remove one '}' closing Bracket at the end of the function.
-
-            IWebElement productTab = GetElementUsingXPath(
-                "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // change to '/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]' to check for disc edition
-
-            if (productTab != null)
+            if (run.Equals(true))
             {
-                productTab.Click();
-                Thread.Sleep(DelayInSec(4));
+                run = ClickProductTab(product); // Remove these 2 line if you are checking for another Product
 
-                IWebElement addToCart = GetElementUsingXPath( // starting point if you to check for a different product
-                    "//input[@id='add-to-cart-button']");
-
-                if (addToCart != null)
+                if (run.Equals(true))
                 {
-                    addToCart.Click();
+                    Thread.Sleep(DelayInSec(GeneralDelay));
+                    run = AddToCart(); 
 
-                    Thread.Sleep(DelayInSec(3));
-
-                    IWebElement noCoverage = GetElementUsingXPath( // starting point if you to check for a different product
-                        "//button[@id='siNoCoverage-announce']");
-
-                    if (noCoverage != null) // this is for some products that offer coverage
+                    if (run.Equals(true))
                     {
-                        try
-                        {
-                            noCoverage.Click();
-                            Thread.Sleep(DelayInSec(3));
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Amazon asks for Coverage");
-                        }
-                    }
-
-                    OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart"); // Link to your Cart
-
-                    IWebElement proceedToCheckout = GetElementUsingXPath(
-                        "//input[@name='proceedToRetailCheckout']");
-
-                    if (proceedToCheckout != null)
-                    {
-                        proceedToCheckout.Click();
-
-                        IWebElement confirmOrder = GetElementUsingXPath(
-                            "//input[@name='placeYourOrder1']"); // confirm order button
-
-                        Thread.Sleep(DelayInSec(3));
-
-                        if (confirmOrder != null)
-                        {
-                            confirmOrder.Click();
-                            MessageBox.Show(
-                                "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
-                            return false;
-                        }
+                        Thread.Sleep(DelayInSec(GeneralDelay));
+                        return Checkout();
                     }
                 }
             }
 
+            return true;
+        }
+
+        private bool ClickProductTab(string product)
+        {
+            IWebElement productTab = null;
+
+            if (product == "PS5_Digital")
+            {
+                productTab = GetElementUsingXPath(
+                    "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // Gets XPath of PS5 Digital Version tab
+            }
+            else if (product == "PS5_Disc")
+            {
+                productTab = GetElementUsingXPath(
+                    "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]"); // Gets XPath of PS5 Disc Version tab
+            }
+
+            if (productTab != null)
+            {
+                productTab.Click(); // Clicks on the Products Tab
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool AddToCart()
+        {
+            IWebElement addToCart = GetElementUsingXPath( // starting point if you to check for a different product
+                "//input[@id='add-to-cart-button']");
+
+            if (addToCart != null)
+            {
+                addToCart.Click();
+                Thread.Sleep(DelayInSec(GeneralDelay));
+
+                IWebElement noCoverage = GetElementUsingXPath( // starting point if you to check for a different product
+                    "//button[@id='siNoCoverage-announce']");
+
+                if (noCoverage != null) // this is for some products that offer coverage
+                {
+                    try
+                    {
+                        noCoverage.Click();
+                        Thread.Sleep(DelayInSec(GeneralDelay));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Amazon asks for Coverage");
+                    }
+                }
+
+                OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart"); // Link to your Cart
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool Checkout()
+        {
+            IWebElement proceedToCheckout = GetElementUsingXPath(
+                "//input[@name='proceedToRetailCheckout']");
+
+            if (proceedToCheckout != null)
+            {
+                proceedToCheckout.Click();
+
+                IWebElement confirmOrder = GetElementUsingXPath(
+                    "//input[@name='placeYourOrder1']"); // confirm order button
+
+                Thread.Sleep(DelayInSec(GeneralDelay));
+
+                if (confirmOrder != null)
+                {
+                    confirmOrder.Click();
+                    MessageBox.Show(
+                        "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
+                    return false;
+                }
+            }
             return true;
         }
 
