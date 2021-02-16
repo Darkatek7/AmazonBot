@@ -122,7 +122,7 @@ namespace PS5_Bot
             if (productTab != null)
             {
                 productTab.Click();
-                Thread.Sleep(DelayInSec(3));
+                Thread.Sleep(DelayInSec(4));
 
                 IWebElement addToCart = GetElementUsingXPath( // starting point if you to check for a different product
                     "//input[@id='add-to-cart-button']");
