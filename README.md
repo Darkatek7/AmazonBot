@@ -15,7 +15,7 @@ Method 1:
 * Run the "setup.exe" file from the installer folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
 * Then run the "PS5_Bot.exe" file from the path you specified.
 
-Method 2: (offers customization, Disc Version, etc) 
+Method 2: (offers customization, etc) 
 * Install **_Visual Studio Community 2019_**: https://visualstudio.microsoft.com/de/downloads/
 * Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and click on **Start** button in top Center Screen.(Or customize if you wish to)
 
