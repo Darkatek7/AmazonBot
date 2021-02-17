@@ -42,6 +42,7 @@ Else:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows are closed!
 * When closing the Bot all Chrome Drivers and Chrome Browser Windows are closed!
 
-### If you encounter any problem create an Issue on Github.
+### If you encounter any problem create an Issue on Github or ask for help in our Discord.
+* https://discord.gg/hP6NZewJ
 
 ### I recommend not letting the bot run on standalone and keeping on eye on it.
