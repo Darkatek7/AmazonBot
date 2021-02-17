@@ -26,7 +26,7 @@ namespace PS5_Bot
             try
             {
                 await CloseChromeDriver();
-                driver = new ChromeDriver("C:\\WebDriver\\", options); // path to chromedriver
+                driver = new ChromeDriver("C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools", options); // path to chromedriver
             }
             catch { }
         }
@@ -90,7 +90,6 @@ namespace PS5_Bot
                 driver.Quit();  // closes chromedriver
                 await CloseChromeDriver(); // makes sure all chromedrivers are closed
             }
-            //Environment.Exit(Environment.ExitCode); // exits program
         }
 
         public async Task<IWebElement> GetElementUsingXPath(string xpath)
