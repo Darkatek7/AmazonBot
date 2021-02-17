@@ -39,8 +39,8 @@ Else:
 * Enter your preferred delay in the textbox at the bottom.
 
 ## Notes:
-* When starting the Bot all Chrome Drivers and Chrome Browser Windows are closed!
-* When closing the Bot all Chrome Drivers and Chrome Browser Windows are closed!
+* When starting the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
+* When closing the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
 
 ### If you encounter any problems feel to ask for help in our Discord.
 * https://discord.gg/hP6NZewJ
