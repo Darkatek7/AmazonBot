@@ -90,7 +90,6 @@ namespace PS5_Bot
                 driver.Quit();  // closes chromedriver
                 await CloseChromeDriver(); // makes sure all chromedrivers are closed
             }
-            //Environment.Exit(Environment.ExitCode); // exits program
         }
 
         public async Task<IWebElement> GetElementUsingXPath(string xpath)

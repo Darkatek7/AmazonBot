@@ -125,6 +125,7 @@ namespace PS5_Bot
         private async void MainWindow_OnClosed(object sender, EventArgs e)
         {
             await _browserLogic.CloseBrowser();
+            Environment.Exit(Environment.ExitCode); // exits program
         }
     }
 }
