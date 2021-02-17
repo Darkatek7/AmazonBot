@@ -106,27 +106,34 @@ namespace PS5_Bot
 
         public bool BuyProductIfAvailable(string product)
         {
-            GeneralDelay = 4;
-            bool run = true;
-
-            if (run.Equals(true))
+            try
             {
-                run = ClickProductTab(product); // Remove these 2 line if you are checking for another Product
+                GeneralDelay = 4;
+                bool run = true;
 
                 if (run.Equals(true))
                 {
-                    Thread.Sleep(DelayInSec(GeneralDelay));
-                    run = AddToCart(); 
+                    run = ClickProductTab(product); // Remove these 2 line if you are checking for another Product
 
                     if (run.Equals(true))
                     {
                         Thread.Sleep(DelayInSec(GeneralDelay));
-                        return Checkout();
+                        run = AddToCart();
+
+                        if (run.Equals(true))
+                        {
+                            Thread.Sleep(DelayInSec(GeneralDelay));
+                            return Checkout();
+                        }
                     }
                 }
-            }
 
-            return true;
+                return true;
+            }
+            catch
+            {
+                return true;
+            }
         }
 
         private bool ClickProductTab(string product)
