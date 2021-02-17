@@ -26,7 +26,7 @@ namespace PS5_Bot
             try
             {
                 await CloseChromeDriver();
-                driver = new ChromeDriver("C:\\WebDriver\\", options); // path to chromedriver
+                driver = new ChromeDriver("C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools", options); // path to chromedriver
             }
             catch { }
         }
