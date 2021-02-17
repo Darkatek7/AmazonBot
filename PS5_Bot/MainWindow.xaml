@@ -5,21 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PS5_Bot"
         mc:Ignorable="d"
-        Title="PS5 Bot" Closed="MainWindow_OnClosed" Height="300" Width="500" ResizeMode="NoResize" Background="#2e2e2e" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="250">
+        Title="PS5 Bot" Height="370" Width="500" Closing="MainWindow_OnClosed" ResizeMode="NoResize" Background="#2e2e2e" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <ComboBox x:Name="versioncombobox"  Foreground="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#2e2e2e" Grid.Row="0" Margin="10">
-            <ComboBoxItem Name="PS5_Digital" VerticalContentAlignment="Center"  Content="PS5 Digital" Background="#2e2e2e" IsSelected="True" HorizontalContentAlignment="Center"/>
-            <ComboBoxItem Name="PS5_Disc" VerticalContentAlignment="Center"  Content="PS5 Disc" Background="#2e2e2e" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="versioncombobox" SelectionChanged="Versioncombobox_OnSelectionChanged" Foreground="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#2e2e2e" Grid.Row="0" Margin="10">
+            <ComboBoxItem Name="PS5_Digital" VerticalContentAlignment="Center" Content="PS5 Digital" Background="#2e2e2e" IsSelected="True" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Name="PS5_Disc" VerticalContentAlignment="Center" Content="PS5 Disc" Background="#2e2e2e" HorizontalContentAlignment="Center"/>
         </ComboBox>
         <Button Name="buybtn" Grid.Row="1" BorderBrush="White" Click="Buybtn_OnClick" Content="Check and Buy Product" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
         <TextBox Name="infobox" Grid.Row="2" Background="#2e2e2e" VerticalContentAlignment="Center" BorderBrush="White" Foreground="White" TextWrapping="Wrap" FontSize="35" TextAlignment="Center" IsEnabled="False" MinHeight="10" VerticalAlignment="Center" Margin="10"/>
-        <Button Name="closebtn" Grid.Row="3" BorderBrush="White" Click="Closebtn_OnClick" Content="Close Browser" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
+        <Button Name="closebtn" Grid.Row="3" BorderBrush="White" Click="Closebtn_OnClick" Content="Stop checking and buying" Background="#2f2f2f" Foreground="White" Margin="15" FontSize="15"/>
+        <TextBox Name="delaytxtbox" TextChanged="Delaytxtbox_OnTextChanged" MaxLength="2" HorizontalContentAlignment="Center" FontSize="15" VerticalContentAlignment="Center" PreviewTextInput="Delaytxtbox_OnPreviewTextInput" Grid.Row="4" Background="#2e2e2e" Margin="10" BorderBrush="White" Foreground="White"/>
+        <TextBlock Grid.Row="4" IsHitTestVisible="False" FontSize="15" Text="Enter your delay in numbers here. Default is 4." TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="White">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=delaytxtbox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Window>

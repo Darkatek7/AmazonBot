@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,13 +14,6 @@ namespace PS5_Bot
 {
     public class BrowserLogic
     {
-        private int GeneralDelay = 2000;
-        private int DelayInSec(int delay)
-        {
-            int delayInSec = delay * 1000;
-            return delayInSec;
-        }
-
         IWebDriver driver;
 
         [SetUp]
@@ -31,7 +25,8 @@ namespace PS5_Bot
             options.AddArguments("--start-maximized");
             try
             {
-                driver = new ChromeDriver("C:\\WebDriver\\", options);  // path to chromedriver
+                await CloseChromeDriver();
+                driver = new ChromeDriver("C:\\WebDriver\\", options); // path to chromedriver
             }
             catch { }
         }
@@ -50,12 +45,25 @@ namespace PS5_Bot
                     driver.Url = site; // tells the driver to go the items url
                 }
             }
-            catch
-            {
-            }
+            catch { }
         }
 
-        public bool IsElementPresent(By by)
+        public async Task CloseChromeDriver()
+        {
+            try
+            {
+                Process[] processlist = Process.GetProcesses();
+
+                foreach (Process process in processlist)
+                {
+                    if (process.ProcessName.Contains("chrome")) // checks if the process name contains word chrome
+                        process.Kill(); // kills all processes with chrome in their name
+                }
+            }
+            catch { }
+        }
+
+        public async Task<bool> IsElementPresent(By by)
         {
             try
             {
@@ -80,13 +88,14 @@ namespace PS5_Bot
             {
                 driver.Close(); // closes chrome
                 driver.Quit();  // closes chromedriver
+                await CloseChromeDriver(); // makes sure all chromedrivers are closed
             }
             //Environment.Exit(Environment.ExitCode); // exits program
         }
 
-        public IWebElement GetElementUsingXPath(string xpath)
+        public async Task<IWebElement> GetElementUsingXPath(string xpath)
         {
-            bool elementIsPresent = IsElementPresent(By.XPath(xpath));
+            bool elementIsPresent = await IsElementPresent(By.XPath(xpath));
 
             if (elementIsPresent.Equals(true) && driver != null) // checks if the element is present on the wesbite
             {
@@ -104,26 +113,25 @@ namespace PS5_Bot
                 "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1"); // link to the product you want to check and buy
         }
 
-        public bool BuyProductIfAvailable(string product)
+        public async Task<bool> BuyProductIfAvailable(string product, int delay)
         {
             try
             {
-                GeneralDelay = 4;
                 bool run = true;
 
                 if (run.Equals(true))
                 {
-                    run = ClickProductTab(product); // Remove these 2 line if you are checking for another Product
+                    run = await ClickProductTab(product); // Remove these 2 line if you are checking for another Product
 
                     if (run.Equals(true))
                     {
-                        Thread.Sleep(DelayInSec(GeneralDelay));
-                        run = AddToCart();
+                        Thread.Sleep(delay);
+                        run = await AddToCart(delay);
 
                         if (run.Equals(true))
                         {
-                            Thread.Sleep(DelayInSec(GeneralDelay));
-                            return Checkout();
+                            Thread.Sleep(delay);
+                            return await Checkout(delay);
                         }
                     }
                 }
@@ -136,18 +144,18 @@ namespace PS5_Bot
             }
         }
 
-        private bool ClickProductTab(string product)
+        private async Task<bool> ClickProductTab(string product)
         {
             IWebElement productTab = null;
 
             if (product == "PS5_Digital")
             {
-                productTab = GetElementUsingXPath(
+                productTab = await GetElementUsingXPath(
                     "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // Gets XPath of PS5 Digital Version tab
             }
             else if (product == "PS5_Disc")
             {
-                productTab = GetElementUsingXPath(
+                productTab = await GetElementUsingXPath(
                     "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]"); // Gets XPath of PS5 Disc Version tab
             }
 
@@ -160,17 +168,17 @@ namespace PS5_Bot
             return false;
         }
 
-        private bool AddToCart()
+        private async Task<bool> AddToCart(int delay)
         {
-            IWebElement addToCart = GetElementUsingXPath( // starting point if you to check for a different product
+            IWebElement addToCart = await GetElementUsingXPath( // starting point if you to check for a different product
                 "//input[@id='add-to-cart-button']");
 
             if (addToCart != null)
             {
                 addToCart.Click();
-                Thread.Sleep(DelayInSec(GeneralDelay));
+                Thread.Sleep(delay);
 
-                IWebElement noCoverage = GetElementUsingXPath( // starting point if you to check for a different product
+                IWebElement noCoverage = await GetElementUsingXPath( // starting point if you to check for a different product
                     "//button[@id='siNoCoverage-announce']");
 
                 if (noCoverage != null) // this is for some products that offer coverage
@@ -178,7 +186,7 @@ namespace PS5_Bot
                     try
                     {
                         noCoverage.Click();
-                        Thread.Sleep(DelayInSec(GeneralDelay));
+                        Thread.Sleep(delay);
                     }
                     catch
                     {
@@ -193,19 +201,19 @@ namespace PS5_Bot
             return false;
         }
 
-        private bool Checkout()
+        private async Task<bool> Checkout(int delay)
         {
-            IWebElement proceedToCheckout = GetElementUsingXPath(
+            IWebElement proceedToCheckout = await GetElementUsingXPath(
                 "//input[@name='proceedToRetailCheckout']");
 
             if (proceedToCheckout != null)
             {
                 proceedToCheckout.Click();
 
-                IWebElement confirmOrder = GetElementUsingXPath(
+                IWebElement confirmOrder = await GetElementUsingXPath(
                     "//input[@name='placeYourOrder1']"); // confirm order button
 
-                Thread.Sleep(DelayInSec(GeneralDelay));
+                Thread.Sleep(delay);
 
                 if (confirmOrder != null)
                 {

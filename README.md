@@ -12,8 +12,6 @@ This is a Bot for checking and buying a PS5 on Amazon.de
 ## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
 * Now **_log into the website_** and make sure you click the stay signed in options.
 
-## Before you run the Bot, make sure you have all Chrome Drivers and Chrome Browser-Windows closed!
-
 ## Run Bot:
 Method 1: 
 * Run the "setup.exe" file from the installer folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
@@ -24,16 +22,25 @@ Method 2: (offers customization, Disc Version, etc)
 * Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and click on **Start** button in top Center Screen.(Or customize if you wish to)
 
 ## Now the Bot should be running! Click on Check and Buy PS5. (Make sure you only click the Button once!)
-* The bot should open your Chrome Browser. After Chrome was started, make sure it says you are logged in on Amazon! (If not, Login)
+* The Bot should open your Chrome Browser. After Chrome was started, make sure it says you are logged in on Amazon! (If not, Login)
 * The Bot will now continuously refresh the page and check if the PS5 is Available.
 
 ## When it is available, it will automaticly add it to your cart and go to the checkout. 
 
 If you have never bought anything using chrome:
-* All you have to do now is close the Bot enter your Amazon password on the Chrome/Amazon.de website and click and buy Product!
+* All you have to do now is pause the Bot enter your Amazon password on the Chrome/Amazon.de website and click and buy Product!
 
 Else:
 * The Bot should have bought the product for you now.
+
+## Setting:
+* All Settings can be changed on the fly. (without pausing)
+* Select the PS5 Version you want to check for.
+* Enter your preferred delay in the textbox at the bottom.
+
+## Note:
+* When starting the Bot all Chrome Drivers and Chrome Browser Windows are closed!
+* When closing the Bot all Chrome Drivers and Chrome Browser Windows are closed!
 
 ### If you encounter any problem create an Issue on Github.
 
