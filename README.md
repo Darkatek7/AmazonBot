@@ -33,7 +33,7 @@ If you have never bought anything using chrome:
 Else:
 * The Bot should have bought the product for you now.
 
-## Setting:
+## Settings:
 * All Settings can be changed on the fly. (without pausing)
 * Select the PS5 Version you want to check for.
 * Enter your preferred delay in the textbox at the bottom.
