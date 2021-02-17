@@ -43,6 +43,6 @@ Else:
 * When closing the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
 
 ### If you encounter any problems feel to ask for help in our Discord.
-* https://discord.gg/hP6NZewJ
+* https://discord.gg/Spak78KaEx
 
 ### I recommend not letting the bot run on standalone and keeping on eye on it.
