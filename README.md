@@ -38,7 +38,7 @@ Else:
 * Select the PS5 Version you want to check for.
 * Enter your preferred delay in the textbox at the bottom.
 
-## Note:
+## Notes:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows are closed!
 * When closing the Bot all Chrome Drivers and Chrome Browser Windows are closed!
 
