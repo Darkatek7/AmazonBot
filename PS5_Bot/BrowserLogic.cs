@@ -14,7 +14,7 @@ namespace PS5_Bot
 {
     public class BrowserLogic
     {
-        IWebDriver driver;
+        private IWebDriver driver;
 
         [SetUp]
         public async Task StartBrowser()
@@ -132,9 +132,9 @@ namespace PS5_Bot
                             Thread.Sleep(delay);
                             return await Checkout(delay);
                         }
+                        MainWindow.AppWindow.UpdateInfoBox("Currently out of stock!", System.Windows.Media.Brushes.Red);
                     }
                 }
-
                 return true;
             }
             catch
@@ -175,6 +175,7 @@ namespace PS5_Bot
             if (addToCart != null)
             {
                 addToCart.Click();
+                MainWindow.AppWindow.UpdateInfoBox("Update: In Stock!", System.Windows.Media.Brushes.GreenYellow);
                 Thread.Sleep(delay);
 
                 IWebElement noCoverage = await GetElementUsingXPath( // starting point if you to check for a different product
@@ -189,7 +190,8 @@ namespace PS5_Bot
                     }
                     catch
                     {
-                        MessageBox.Show("Amazon asks for Coverage");
+                        MainWindow.AppWindow.UpdateInfoBox("Error: Check Amazon!", System.Windows.Media.Brushes.Red);
+                        Thread.Sleep(delay);
                     }
                 }
 
@@ -208,7 +210,7 @@ namespace PS5_Bot
             if (proceedToCheckout != null)
             {
                 proceedToCheckout.Click();
-
+                MainWindow.AppWindow.UpdateInfoBox("Update: Proceeding to Checkout", System.Windows.Media.Brushes.GreenYellow);
                 IWebElement confirmOrder = await GetElementUsingXPath(
                     "//input[@name='placeYourOrder1']"); // confirm order button
 
@@ -217,6 +219,7 @@ namespace PS5_Bot
                 if (confirmOrder != null)
                 {
                     confirmOrder.Click();
+                    MainWindow.AppWindow.UpdateInfoBox("Update: Bought Product!", System.Windows.Media.Brushes.GreenYellow);
                     MessageBox.Show(
                         "PS5 has been bought or Amazon is asking for a Password! Anyway check out your Amazon tab in chrome!");
                     return false;

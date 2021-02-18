@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Brush = System.Drawing.Brush;
+using Brushes = System.Drawing.Brushes;
+using Color = System.Drawing.Color;
 
 namespace PS5_Bot
 {
@@ -27,7 +31,8 @@ namespace PS5_Bot
         private Thread myThread;
         private int delay;
         private int defaultDelay = 4;
-        private string product;
+        private string product; 
+        public static MainWindow AppWindow;
 
         private int DelayInSec(int delay)
         {
@@ -38,6 +43,7 @@ namespace PS5_Bot
         public MainWindow()
         {
             InitializeComponent();
+            AppWindow = this;
         }
 
         private async void Buybtn_OnClick(object sender, RoutedEventArgs e)
@@ -82,7 +88,7 @@ namespace PS5_Bot
                 await _browserLogic.ReloadTab(); // reload tab of chrome browser
             }
 
-            infobox.Text = "Check if Product was bought correctly!";
+           await UpdateInfoBox("Check if Product was bought correctly!", System.Windows.Media.Brushes.GreenYellow);
         }
 
         private async void Delaytxtbox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -126,6 +132,18 @@ namespace PS5_Bot
         {
             await _browserLogic.CloseBrowser();
             Environment.Exit(Environment.ExitCode); // exits program
+        }
+
+        public async Task UpdateInfoBox(string text, System.Windows.Media.Brush brush)
+        {
+            try
+            {
+                this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    infobox.Text = text;
+                    infobox.Foreground = brush;
+                }));
+            }catch { }
         }
     }
 }
