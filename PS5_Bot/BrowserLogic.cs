@@ -225,6 +225,10 @@ namespace PS5_Bot
                     return false;
                 }
             }
+            else
+            {
+                await OpenPS5Screen();
+            }
             return true;
         }
 
