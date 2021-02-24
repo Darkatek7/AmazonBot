@@ -150,18 +150,37 @@ namespace PS5_Bot
             if (product == "PS5_Digital")
             {
                 productTab = await GetElementUsingXPath(
-                    "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[7]"); // Gets XPath of PS5 Digital Version tab
+                    "//*[@title='Wählen Sie PS5 - Digital Edition durch Klicken aus']"); // Gets XPath of PS5 Digital Version tab
             }
             else if (product == "PS5_Disc")
             {
                 productTab = await GetElementUsingXPath(
-                    "/html/body/div[2]/div[2]/div[5]/div[5]/div[4]/div[30]/div[1]/div/form/div/ul/li[6]"); // Gets XPath of PS5 Disc Version tab
+                    "//*[@title='Wählen Sie PS5 durch Klicken aus']"); // Gets XPath of PS5 Disc Version tab
             }
 
             if (productTab != null)
             {
                 productTab.Click(); // Clicks on the Products Tab
                 return true;
+            }
+            else
+            {
+                if (product == "PS5_Digital")
+                {
+                    productTab = await GetElementUsingXPath(
+                        "//*[@title='Click to select PS5 - Digital Edition']"); // Gets XPath of PS5 Digital Version tab
+                }
+                else if (product == "PS5_Disc")
+                {
+                    productTab = await GetElementUsingXPath(
+                        "//*[@title='Click to select PS5']"); // Gets XPath of PS5 Disc Version tab
+                }
+
+                if (productTab != null)
+                {
+                    productTab.Click(); // Clicks on the Products Tab
+                    return true;
+                }
             }
 
             return false;

@@ -9,6 +9,7 @@ This is a Bot for checking and buying a PS5 on Amazon.de
 
 ## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
 * Now **_log into the website_** and make sure you click the stay signed in options.
+* Change your Amazon language to german or english or else it won't work!
 
 ## Run Bot:
 Method 1: 
