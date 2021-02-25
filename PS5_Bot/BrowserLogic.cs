@@ -9,12 +9,20 @@ using System.Windows;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Newtonsoft.Json;
+using PS5_Bot.Models;
 
 namespace PS5_Bot
 {
     public class BrowserLogic
     {
-        private IWebDriver driver;
+        private IWebDriver _driver;
+        private Amazon_de _xpath;
+
+        public BrowserLogic(Amazon_de xpath)
+        {
+            _xpath = xpath;
+        }
 
         [SetUp]
         public async Task StartBrowser()
@@ -25,8 +33,8 @@ namespace PS5_Bot
             options.AddArguments("--start-maximized");
             try
             {
-                await CloseChromeDriver();
-                driver = new ChromeDriver(options);
+                await CloseChrome_driver();
+                _driver = new ChromeDriver(options);
             }
             catch { }
         }
@@ -35,20 +43,20 @@ namespace PS5_Bot
         {
             try
             {
-                if (driver != null && !string.IsNullOrEmpty(site))
-                    driver.Url = site;
-                else if (driver == null)
+                if (_driver != null && !string.IsNullOrEmpty(site))
+                    _driver.Url = site;
+                else if (_driver == null)
                 {
                     await StartBrowser(); // calls StartBrowser function
 
                     Thread.Sleep(1000);
-                    driver.Url = site; // tells the driver to go the items url
+                    _driver.Url = site; // tells the _driver to go the items url
                 }
             }
             catch { }
         }
 
-        public async Task CloseChromeDriver()
+        public async Task CloseChrome_driver()
         {
             try
             {
@@ -67,9 +75,9 @@ namespace PS5_Bot
         {
             try
             {
-                if (driver != null)
+                if (_driver != null)
                 {
-                    driver.FindElement(by); // checks if element is present on website
+                    _driver.FindElement(by); // checks if element is present on website
                     return true;
                 }
 
@@ -84,11 +92,11 @@ namespace PS5_Bot
         [TearDown]
         public async Task CloseBrowser()
         {
-            if (driver != null)
+            if (_driver != null)
             {
-                driver.Close(); // closes chrome
-                driver.Quit();  // closes chromedriver
-                await CloseChromeDriver(); // makes sure all chromedrivers are closed
+                _driver.Close(); // closes chrome
+                _driver.Quit();  // closes chrome_driver
+                await CloseChrome_driver(); // makes sure all chrome_drivers are closed
             }
         }
 
@@ -96,9 +104,9 @@ namespace PS5_Bot
         {
             bool elementIsPresent = await IsElementPresent(By.XPath(xpath));
 
-            if (elementIsPresent.Equals(true) && driver != null) // checks if the element is present on the wesbite
+            if (elementIsPresent.Equals(true) && _driver != null) // checks if the element is present on the wesbite
             {
-                return driver.FindElement(By.XPath(xpath));
+                return _driver.FindElement(By.XPath(xpath));
             }
             else
             {
@@ -108,8 +116,7 @@ namespace PS5_Bot
 
         public async Task OpenPS5Screen()
         {
-            await OpenWebsite(
-                "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1"); // link to the product you want to check and buy
+            await OpenWebsite(_xpath.product_url); // link to the product you want to check and buy
         }
 
         public async Task<bool> BuyProductIfAvailable(string product, int delay)
@@ -149,13 +156,11 @@ namespace PS5_Bot
 
             if (product == "PS5_Digital")
             {
-                productTab = await GetElementUsingXPath(
-                    "//*[@title='Wählen Sie PS5 - Digital Edition durch Klicken aus']"); // Gets XPath of PS5 Digital Version tab
+                productTab = await GetElementUsingXPath(_xpath.ps5_digital_edition_ger); // Gets XPath of PS5 Digital Version tab
             }
             else if (product == "PS5_Disc")
             {
-                productTab = await GetElementUsingXPath(
-                    "//*[@title='Wählen Sie PS5 durch Klicken aus']"); // Gets XPath of PS5 Disc Version tab
+                productTab = await GetElementUsingXPath(_xpath.ps5_disc_edition_ger); // Gets XPath of PS5 Disc Version tab
             }
 
             if (productTab != null)
@@ -167,13 +172,11 @@ namespace PS5_Bot
             {
                 if (product == "PS5_Digital")
                 {
-                    productTab = await GetElementUsingXPath(
-                        "//*[@title='Click to select PS5 - Digital Edition']"); // Gets XPath of PS5 Digital Version tab
+                    productTab = await GetElementUsingXPath(_xpath.ps5_digital_edition_eng); // Gets XPath of PS5 Digital Version tab
                 }
                 else if (product == "PS5_Disc")
                 {
-                    productTab = await GetElementUsingXPath(
-                        "//*[@title='Click to select PS5']"); // Gets XPath of PS5 Disc Version tab
+                    productTab = await GetElementUsingXPath(_xpath.ps5_disc_edition_eng); // Gets XPath of PS5 Disc Version tab
                 }
 
                 if (productTab != null)
@@ -188,8 +191,7 @@ namespace PS5_Bot
 
         private async Task<bool> AddToCart(int delay)
         {
-            IWebElement addToCart = await GetElementUsingXPath( // starting point if you to check for a different product
-                "//input[@id='add-to-cart-button']");
+            IWebElement addToCart = await GetElementUsingXPath(_xpath.add_to_cart);
 
             if (addToCart != null)
             {
@@ -214,7 +216,7 @@ namespace PS5_Bot
                     }
                 }
 
-                OpenWebsite("https://www.amazon.de/gp/cart/view.html?ref_=nav_cart"); // Link to your Cart
+                await OpenWebsite(_xpath.cart_url); // Link to your Cart
                 return true;
             }
 
@@ -223,15 +225,13 @@ namespace PS5_Bot
 
         private async Task<bool> Checkout(int delay)
         {
-            IWebElement proceedToCheckout = await GetElementUsingXPath(
-                "//input[@name='proceedToRetailCheckout']");
+            IWebElement proceedToCheckout = await GetElementUsingXPath(_xpath.checkout_order);
 
             if (proceedToCheckout != null)
             {
                 proceedToCheckout.Click();
                 MainWindow.AppWindow.UpdateInfoBox("Update: Proceeding to Checkout", System.Windows.Media.Brushes.GreenYellow);
-                IWebElement confirmOrder = await GetElementUsingXPath(
-                    "//input[@name='placeYourOrder1']"); // confirm order button
+                IWebElement confirmOrder = await GetElementUsingXPath(_xpath.place_order); // confirm order button
 
                 Thread.Sleep(delay);
 
@@ -253,7 +253,7 @@ namespace PS5_Bot
 
         public async Task ReloadTab()
         {
-            driver.Navigate().Refresh();
+            _driver.Navigate().Refresh();
         }
     }
 }

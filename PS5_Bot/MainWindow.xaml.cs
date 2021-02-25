@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,6 +17,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.XPath;
+using Newtonsoft.Json;
+using PS5_Bot.Models;
 using Brush = System.Drawing.Brush;
 using Brushes = System.Drawing.Brushes;
 using Color = System.Drawing.Color;
@@ -27,7 +31,8 @@ namespace PS5_Bot
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BrowserLogic _browserLogic = new BrowserLogic();
+        private static string xpathJson = File.ReadAllText("xpaths.json");
+        private BrowserLogic _browserLogic = new BrowserLogic(JsonConvert.DeserializeObject<Amazon_de>(xpathJson));
         private Thread myThread;
         private int delay;
         private int defaultDelay = 4;
