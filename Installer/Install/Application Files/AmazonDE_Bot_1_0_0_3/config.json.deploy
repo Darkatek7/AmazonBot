@@ -1,0 +1,19 @@
+
+{
+    "custom_product_url": "",
+    "custom_product_simplicity": "simple",
+    "custom_product_title_ger": "//*[@title='Wählen Sie PRODUKTNAMEVOMPRODUKTFELD durch Klicken aus']",
+    "custom_product_title_eng": "//*[@title='Click to select PRODUCTNAMEOFPRODUCTTAB']",
+    
+    "product_url": "https://www.amazon.de/gp/product/B08H98GVK8?pf_rd_r=8WGMBRVYKV6137VVWK67&pf_rd_p=4ba7735c-ede3-4212-a657-844b25584948&pd_rd_r=5a951b88-da02-4e0f-bd04-95c3f37726cd&pd_rd_w=Yk4dL&pd_rd_wg=WdijX&ref_=pd_gw_unk&th=1",
+    "ps5_digital_edition_ger": "//*[@title='Wählen Sie PS5 - Digital Edition durch Klicken aus']",
+    "ps5_digital_edition_eng": "//*[@title='Click to select PS5 - Digital Edition']",
+    "ps5_disc_edition_ger": "//*[@title='Wählen Sie PS5 durch Klicken aus']",
+    "ps5_disc_edition_eng": "//*[@title='Click to select PS5']",
+    
+    "add_to_cart": "//input[@id='add-to-cart-button']",
+    "cart_url": "https://www.amazon.de/gp/cart/view.html?ref_=nav_cart",
+    "no_coverage": "//button[@aria-label='Close']",
+    "checkout_order": "//input[@name='proceedToRetailCheckout']",
+    "place_order": "//input[@name='placeYourOrder1']"
+}
