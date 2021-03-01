@@ -12,7 +12,7 @@ This is a Bot for checking and buying a Product on Amazon.de
 * Change your Amazon language to german or english or else it won't work!
 
 ## Run Bot:
-* Run the "setup.exe" file from the installer folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
+* Run the one of the installers from install folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
 * Then run the "AmazonDE_Bot" Program from the path you specified.
 
 ## Now the Bot should be running! Click on Check and Buy Product.
