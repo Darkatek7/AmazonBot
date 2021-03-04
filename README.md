@@ -1,5 +1,5 @@
-# PS5_Bot_AmazonDE
-This is a Bot for checking and buying a PS5 on Amazon.de
+# AmazonDE_Bot
+This is a Bot for checking and buying a Product on Amazon.de
 
 ### Windows only! 
 ### Be careful, this buys everything in your Cart!
@@ -12,19 +12,14 @@ This is a Bot for checking and buying a PS5 on Amazon.de
 * Change your Amazon language to german or english or else it won't work!
 
 ## Run Bot:
-Method 1: 
-* Run the "setup.exe" file from the installer folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
-* Then run the "PS5_Bot.exe" file from the path you specified.
+* Run the one of the installers from install folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
+* Then run the "AmazonDE_Bot" Program from the path you specified.
 
-Method 2: (offers customization, etc) 
-* Install **_Visual Studio Community 2019_**: https://visualstudio.microsoft.com/de/downloads/
-* Now run the Visual Studio Solution (**_PS5_Bot.sln_**) and click on **Start** button in top Center Screen.(Or customize if you wish to)
-
-## Now the Bot should be running! Click on Check and Buy PS5. (Make sure you only click the Button once!)
+## Now the Bot should be running! Click on Check and Buy Product.
 * The Bot should open your Chrome Browser. After Chrome was started, make sure it says you are logged in on Amazon! (If not, Login)
-* The Bot will now continuously refresh the page and check if the PS5 is Available.
+* The Bot will now continuously refresh the page and check if the Product is Available.
 
-## When it is available, it will automaticly add it to your cart and go to the checkout. 
+## When it is available, it will automaticly add the Product to your cart and go to the checkout. 
 
 If you have never bought anything using chrome:
 * All you have to do now is pause the Bot enter your Amazon password on the Chrome/Amazon.de website and click and buy Product!
@@ -33,9 +28,13 @@ Else:
 * The Bot should have bought the product for you now.
 
 ## Settings:
-* All Settings can be changed on the fly. (without pausing)
-* Select the PS5 Version you want to check for.
+* Settings can be changed on the fly. (except config.json)
 * Enter your preferred delay in the textbox at the bottom.
+
+### Custom Product Settings:
+* "custom_product_url": Amazon url of the product you wish to buy.
+* "custom_product_simplicity": set this value to "complex" if your product doesn't have a hardcoded Amazon url (like the ps5), else leave it as "simple".
+* "custom_product_title_": Replace PRODUCTNAMEOFPRODUCTTAB with the actual product names Tab. (this is only for complex products)
 
 ## Notes:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
