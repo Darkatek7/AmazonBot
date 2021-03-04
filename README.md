@@ -30,6 +30,7 @@ Else:
 ## Settings:
 * Settings can be changed on the fly. (except config.json)
 * Enter your preferred delay in the textbox at the bottom.
+* Select the checkboxes on the products you want to check for.
 
 ### Custom Product Settings:
 * "custom_product_url": Amazon url of the product you wish to buy.
