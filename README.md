@@ -15,6 +15,9 @@ This is a Bot for checking and buying a Product on Amazon.de
 ## Run Bot:
 * Run "AmazonDE_Bot" Program from the path you specified.(Also Desktop or Start Menu)
 
+## Checking a Product:
+* When checking and buying a product for the first time, it takes about one minute to create a chromeprofile for that item. Don't close the program while creating it and wait until the chrome windows open! Otherwise you have to open the programs installation folder and delete the folder after the product you wanted to check for or delete and re-add the product!
+
 ## Now the Bot should be running!
 * Click on Run checking and buying.
 * The Bot should open your Chrome Browser. After Chrome was started, make sure it says you are logged in on Amazon! (If not, Login)
@@ -35,6 +38,7 @@ Else:
 ## Edit Products
 * When adding new Products, make sure the Product name is exactly what it says on Amazon (eg: PS5, PS5 - Digital Edition) or complex products won't work.
 * If you want to check for a product make sure you enabled the checkbox!
+* Adding a product takes about one minute to create a new chromeprofile. (don't close the program while the window is not reacting)
 
 ## Notes:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
