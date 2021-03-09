@@ -1,5 +1,5 @@
-# AmazonDE_Bot
-This is a Bot for checking and buying a Product on Amazon.de
+# Amazon_Bot
+This is a Bot for checking and buying a Product on Amazon
 
 ### Windows only! 
 ### Be careful, this buys everything in your Cart!
@@ -8,7 +8,7 @@ This is a Bot for checking and buying a Product on Amazon.de
 * Run "requirements.ps1" from the Installer folder in Powershell
 * Run the installer (setup.exe) from install folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
 
-## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open https://www.amazon.de. 
+## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open the amazon website
 * Now **_log into the website_** and make sure you click the stay signed in options.
 * Change your Amazon language to german or english or else it might not work!
 
@@ -25,7 +25,7 @@ This is a Bot for checking and buying a Product on Amazon.de
 
 ## When it is available, it will automaticly add the Product to your cart and go to the checkout. 
 If you have never bought anything using chrome:
-* All you have to do now is pause the Bot enter your Amazon password on the Chrome/Amazon.de website and click and buy Product!
+* All you have to do now is pause the Bot enter your Amazon password on the Chrome/Amazon website and click and buy Product!
 
 Else:
 * The Bot should have bought the product for you now.
