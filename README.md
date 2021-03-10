@@ -9,8 +9,9 @@ This is a Bot for checking and buying a Product on Amazon
 * Run the installer (setup.exe) from install folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
 
 ## After installing Chrome Driver, Google Chrome and .Net Framework please open your Google Chrome Webbrowser and open the amazon website
+* Open your chrome browser and make sure in the to right corner (under profiles) it says guest or not signed in.
 * Now **_log into the website_** and make sure you click the stay signed in options.
-* Change your Amazon language to german or english or else it might not work!
+* Change your Amazon language to german or english or complex products will not work!
 
 ## Run Bot:
 * Run "AmazonDE_Bot" Program from the path you specified.(Also Desktop or Start Menu)
@@ -43,6 +44,7 @@ Else:
 ## Notes:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
 * When closing the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
+* The bot only buys one piece of every product you check for.
 
 ### If you encounter any problems feel free to ask for help in our Discord.
 * https://discord.gg/Spak78KaEx
