@@ -40,6 +40,7 @@ Else:
 * When adding new Products, make sure the Product name is exactly what it says on Amazon (eg: PS5, PS5 - Digital Edition) or complex products won't work.
 * If you want to check for a product make sure you enabled the checkbox!
 * You can also enter a wishlist url to buy everything that is in that wishlist (wishlist has to a wishlist of your Account).
+* Leave max price blank or set it to 0 to ignore max price. Note: Only works on reseller pages (Available from these sellers) not on main product page)
 * Buying multiple quantity of a product doesn't work properly with wishlists! (leave it at 1 for wishlists!)
 
 ## Notes:
