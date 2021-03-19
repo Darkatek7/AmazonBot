@@ -40,8 +40,8 @@ Else:
 * When adding new Products, make sure the Product name is exactly what it says on Amazon (eg: PS5, PS5 - Digital Edition) or complex products won't work.
 * If you want to check for a product make sure you enabled the checkbox!
 * You can also enter a wishlist url to buy everything that is in that wishlist (wishlist has to a wishlist of your Account).
-* Leave max price blank or set it to 0 to ignore max price. Note: Only works on reseller pages (Available from these sellers) not on main product page)
-* Buying multiple quantity of a product doesn't work properly with wishlists! (leave it at 1 for wishlists!)
+* Leave max price blank or set it to 0 to ignore max price. Note: max price works for the most products, not all of them. Try it out first!
+* Buying multiple quantity of a product doesn't work properly with wishlists! (set to 2 if theres more then one item in the wishlist and in your wishlist settings on amazon set remove product after bought product.)
 
 ## Notes:
 * When starting the Bot all Chrome Drivers and Chrome Browser Windows will be closed!
