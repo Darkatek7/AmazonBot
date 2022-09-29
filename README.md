@@ -1,14 +1,14 @@
 # Amazon_Bot
-This is a Bot for checking and buying a Product on Amazon
+This is a bot for checking and buying products on Amazon
 
 ### Windows only! 
-### Be careful, this buys everything in your Cart!
+### Be careful! This will buy everything in your cart!
 
-## Install: (All Installers are in the Git Repository)
-* Run "requirements.ps1" from the Installer/Requirements folder in Powershell (or have both .Net 5 and Google Chrome V89.0.4389.114 installed)
-* Run the installer (setup.exe) from Installers/Setup Files folder. (Your Anti-Virus might give you a warning as the installer isn't signed)
+## Install: (All Installers are available for download in the git repository)
+* Run "requirements.ps1" inside the Installer/Requirements directory using Powershell. This will install all needed dependencies
+* Run the setup.exe inside the Installers/Setup directory. (This .exe might be detected by your AV as this is not signed by a registered developer)
 
-## Please open your Google Chrome Webbrowser and open the amazon website
+## Open your Google Chrome Webbrowser, then open the amazon website
 * Open your chrome browser and make sure in the to right corner (under profiles) it says guest or not signed in.
 * Now **_log into the Amazon website_** and make sure you click the stay signed in options.
 * Change your Amazon language to german or english or complex products will not work!
