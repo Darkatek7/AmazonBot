@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # Amazon_Bot
 This is a bot for checking and buying products on Amazon
 
